@@ -1,0 +1,127 @@
+<p>registrar works!</p>
+<div class="container mt-5">
+    @if(mostrarError){
+    <div  class="alert alert-dismissible alert-danger">
+        <div class="text-center">
+                       
+            <span class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                <i class="bi bi-exclamation-diamond-fill"></i>
+            </span>
+             
+            {{mensaje}}
+        </div>
+      </div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="agregarPersona()">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="cedula">Cédula:</label>
+                    <input type="text" formControlName="cedula" class="form-control form-control-lg" maxlength="10"
+                        minlength="10" required pattern="[0-9]+">
+
+                </div>
+            </div>
+         
+        </div>
+
+        
+
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="nombre">Nombres:</label>
+                    <input type="text" formControlName="nombre" class="form-control form-control-lg">
+
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="apellido">Apellidos:</label>
+                    <input type="text" formControlName="apellido" class="form-control form-control-lg">
+
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                    <input type="date" formControlName="fechaNacimiento" class="form-control form-control-lg"
+                        id="fechaNacimiento">
+
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="genero">Genero</label>
+                    <select formControlName="genero" id="genero" class="form-select  form-control-lg">
+                        @for (elem of listaGenero; track elem.id) {
+                        <!--option  value="{{elem.id}}"-->
+                        <option  value="{{elem.valor}}">
+                            {{elem.valor}}
+                        </option>
+                        }
+                    </select>
+                    
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="form-group mt-4">
+                    <button [disabled]="form.invalid" type="submit" class="btn btn-primary btn-lg">Agregar
+                        <i class="bi bi-person-plus-fill"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+
+
+  
+    
+    <br>
+    <br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Cedula</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Fecha de nacimiento</th>
+                <th scope="col">Genero</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+     
+            @for (persona of listPersona; track persona.cedula) { 
+            <tr >
+                <th scope="row"></th>
+                <td>{{persona.cedula}}</td>
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.apellido}}</td>
+                <td>{{persona.fechaNacimiento}}</td>
+                <td>{{persona.genero}}</td>           
+                
+                <td>
+
+                  
+                    <span class="cursor text-danger offset-2" (click)="eliminarPersona(persona.cedula)">
+                        <i class="bi bi-file-earmark-x-fill"></i>
+                    </span>
+                </td>
+
+            </tr>
+        }
+
+
+        </tbody>
+    </table>
+</div>
