@@ -2,3 +2,5 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import 'bootstrap-icons/font/bootstrap-icons.min.css';
 body {margin: 0; margin-bottom: 50 px;} .navbar-nav i {font-size: 25px; color: cyan; padding: 5px; margin: 0;}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
