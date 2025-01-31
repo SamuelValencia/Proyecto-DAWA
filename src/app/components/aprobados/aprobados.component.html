@@ -1,56 +1,42 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aprobados</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container mt-4">
-    <p>APROBACIÓN DE TESIS</p>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Propuestas</th>
-                <th>Estado</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>Jose</td><td>Pérez</td><td>Aplicaión Web</td><td>Aprobado</td></tr>
-            <tr><td>Ana</td><td>Gómez</td><td>Aplicaión Mobil</td><td>Denegado</td></tr>
-            <tr><td>Carlos</td><td>Ruiz</td><td>Aplicaión Mobil</td><td>Aprobado</td></tr>
-            <tr><td>María</td><td>Hernández</td><td>Aplicaión Web</td><td>Aprobado</td></tr>
-            <tr><td>Pedro</td><td>Martínez</td><td>Aplicaión Web</td><td>Denegado</td></tr>
-            <tr><td>Sofía</td><td>López</td><td>Aplicaión Mobil</td><td>Denegado</td></tr>
-            <tr><td>Javier</td><td>Mora</td><td>Aplicaión Web</td><td>Aprobado</td></tr>
-            <tr><td>Laura</td><td>Vargas</td><td>Aplicaión Web</td><td>Denegado</td></tr>
-            <tr><td>Esteban</td><td>Ramírez</td><td>Aplicaión Mobil</td><td>Denegado</td></tr>
-            <tr><td>Camila</td><td>Jiménez</td><td>Aplicaión Web</td><td>Aprobado</td></tr>
-        </tbody>
-    </table>
-</div>
-
-</body>
-</html>
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>APROBACIÓN DE TESIS</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="table-container">
+        <table mat-table [dataSource]="students" class="mat-elevation-z8">
+          <!-- Nombre Column -->
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let student"> {{student.nombre}} </td>
+          </ng-container>
+  
+          <!-- Apellido Column -->
+          <ng-container matColumnDef="apellido">
+            <th mat-header-cell *matHeaderCellDef> Apellido </th>
+            <td mat-cell *matCellDef="let student"> {{student.apellido}} </td>
+          </ng-container>
+  
+          <!-- Propuestas Column -->
+          <ng-container matColumnDef="propuestas">
+            <th mat-header-cell *matHeaderCellDef> Propuestas </th>
+            <td mat-cell *matCellDef="let student"> {{student.propuestas}} </td>
+          </ng-container>
+  
+          <!-- Estado Column -->
+          <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef> Estado </th>
+            <td mat-cell *matCellDef="let student"> {{student.estado}} </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+      <div class="button-container">
+        <button mat-raised-button id="guardar">ANTERIOR</button>
+        <button mat-raised-button id="actualizar">SIGUIENTE</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

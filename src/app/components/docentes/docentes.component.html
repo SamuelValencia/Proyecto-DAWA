@@ -1,60 +1,38 @@
-<!--<div class="container mt-4"><p>Alumnos works!</p></div>-->
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOCENTES</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container mt-4">
-    <p>DOCENTES </p>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Cédula</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>Javier</td><td>Gómez</td><td>2345678901</td></tr>
-            <tr><td>Carlos</td><td>Ruiz</td><td>3456789012</td></tr>
-            <tr><td>María</td><td>Jiménez</td><td>0123456789</td></tr>
-            <tr><td>Ana</td><td>Mora</td><td>7890123456</td></tr>
-            <tr><td>María</td><td>Hernández</td><td>4567890123</td></tr>
-            <tr><td>Pedro</td><td>Martínez</td><td>5678901234</td></tr>
-            <tr><td>Sofía</td><td>López</td><td>6789012345</td></tr>
-            <tr><td>Laura</td><td>Vargas</td><td>8901234567</td></tr>
-            <tr><td>Juan</td><td>Pérez</td><td>1234567890</td></tr>
-            <tr><td>Esteban</td><td>Ramírez</td><td>9012345678</td></tr>
-        </tbody>
-    </table>
-</div>
-
-
-</body>
-</html>
-
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>DOCENTES</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="table-container">
+        <table mat-table [dataSource]="docentes" class="mat-elevation-z8">
+          <!-- Nombre Column -->
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let docente"> {{docente.nombre}} </td>
+          </ng-container>
+  
+          <!-- Apellido Column -->
+          <ng-container matColumnDef="apellido">
+            <th mat-header-cell *matHeaderCellDef> Apellido </th>
+            <td mat-cell *matCellDef="let docente"> {{docente.apellido}} </td>
+          </ng-container>
+  
+          <!-- Cédula Column -->
+          <ng-container matColumnDef="cedula">
+            <th mat-header-cell *matHeaderCellDef> Cédula </th>
+            <td mat-cell *matCellDef="let docente"> {{docente.cedula}} </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+      <div class="button-container">
+        <button mat-raised-button id="guardar">ANTERIOR</button>
+        <button mat-raised-button id="actualizar">SIGUIENTE</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
 
 
